@@ -1,19 +1,4 @@
-Name: Insert %in%
-Description: Inserts `%in%` at the cursor position.
-Binding: insertInAddin
+Name: Export FigureJ Panel 
+Description: Exports the current figure, using settings read from FigureJ
+Binding: exportPanel
 Interactive: false
-
-Name: Find and Replace
-Description: Find and replace words in a document.
-Binding: findAndReplaceAddin
-Interactive: true
-
-Name: Reformat R Code
-Description: Reformat R code using 'formatR::tidy_source()'.
-Binding: reformatAddin
-Interactive: true
-
-Name: Subset a Data Frame
-Description: Interactively subset a data frame.
-Binding: subsetAddin
-Interactive: true
