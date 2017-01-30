@@ -1,9 +1,7 @@
 RStudio FigureJ Addin
 =====================
 
-RStudio addins are R functions that can be called through RStudio. This package
-provides a small set of example addins, and helps demonstrate how package
-authors can create and expose their own addins.
+RStudio FigureJ addin allows to export a copy of the current Rstudio plot matching the exposed FigureJ panel with expected dimensions.
 
 Installation
 ------------
