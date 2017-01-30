@@ -4,5 +4,5 @@
 #'
 #' @export
 exportPanel <- function() {
-  rstudioapi::savePlotAsImage("/Users/jmutterer/Desktop/test.png", "png", 640, 480)
+  rstudioapi::callFun("savePlotAsImage","/Users/jmutterer/Desktop/test.png", "png", 640, 480)
 }
