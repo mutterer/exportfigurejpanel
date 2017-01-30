@@ -4,5 +4,5 @@
 #'
 #' @export
 exportPanel <- function() {
-  rstudioapi::insertText(" %panel% ")
+  rstudioapi::savePlotAsImage("/Users/jmutterer/Desktop/test.png", "png", 640, 480)
 }
