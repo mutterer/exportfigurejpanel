@@ -48,6 +48,17 @@ if ((panelTempDir != "") &&
       as.numeric(panelHeight)
     )
     
+    context <- rstudioapi::getSourceEditorContext()
+      code <- context$contents
+      sink(file=file.path(paste(panelTempDir,paste(strsplit(panelFilename,".tif"),".R",sep=""),sep=""),fsep=.Platform$file.sep),append=FALSE)
+      cat("# Code for generating ")
+      cat(panelFilename)
+      cat(" figure panel\n\n")
+      cat(code)
+      cat("\n # end of code\n")
+      sink(NULL)
+    
+    
   }
 } 
 }
