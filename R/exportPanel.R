@@ -39,6 +39,16 @@ if (file.exists (f)) {
 if ((panelTempDir != "") &&
     (panelFilename != "") && (panelWidth != "") && (panelHeight != "")) {
   if (nchar(f) > 0) {
+      context <- rstudioapi::getSourceEditorContext()
+      code <- context$contents
+      cat("code")
+      sink(file=file.path(paste(panelTempDir,paste(strsplit(panelFilename,".tif"),".R",sep=""),sep=""),fsep=.Platform$file.sep),append=FALSE)
+      cat("# Code for generating ")
+      cat(panelFilename)
+      cat(" figure panel\n\n")
+      cat(code)
+      cat("\n # end of code\n")
+      sink(NULL)
     print (paste (panelTempDir, panelFilename, panelWidth, panelHeight))
     rstudioapi::callFun(
       "savePlotAsImage",
