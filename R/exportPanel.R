@@ -10,6 +10,7 @@ exportPanel <- function() {
       paste(Sys.getenv("HOME"),
             "/Library/Preferences/IJ_Prefs.txt",
             sep = "")
+    notMac<-FALSE
   } else {
     # will make it work on Win10 for now. better method needed
     f <-
@@ -17,6 +18,7 @@ exportPanel <- function() {
             ".imagej",
             "IJ_Prefs.txt",
             sep = .Platform$file.sep)
+    notMac<-TRUE
   }
   print (paste("prefs file: ",f))
   
@@ -44,11 +46,19 @@ exportPanel <- function() {
     print (paste("width:",panelWidth))
     print (paste("height:",panelHeight))
   }
+  
+  if (notMac){
+    print("clean dir path")
+    panelTempDir<-gsub("\\\\\\\\","/",panelTempDir)
+    panelTempDir<-gsub("\\\\","",panelTempDir)
+  }
+  # print (file.exists(file.path(panelTempDir)))
   ### make sure temp dir exists, or create it
-  if (file.exists (panelTempDir)) {
+  if (file.exists(file.path(panelTempDir))) {
     print ("temp dir does exists")
   } else {
     print ("no temp dir, creating it")
+    
     dir.create(panelTempDir)
   }
   
