@@ -11,15 +11,7 @@ exportPanel <- function() {
             "/Library/Preferences/IJ_Prefs.txt",
             sep = "")
   } else {
-    f <-
-      paste(Sys.getenv("HOME"),
-            ".imagej",
-            "IJ_Prefs.txt",
-            sep = .Platform$file.sep)
-    
-  }
-  # will make it work on Win10 for now. better method needed
-  if (file.exists (f)) {
+    # will make it work on Win10 for now. better method needed
     f <-
       paste(Sys.getenv("USERPROFILE"),
             ".imagej",
