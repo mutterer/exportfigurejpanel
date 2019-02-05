@@ -16,7 +16,10 @@ exportPanel <- function() {
           ".imagej",
           "IJ_Prefs.txt",
           sep = .Platform$file.sep)
+  
 }
+
+  print (paste("prefs file: ",f))
 
 if (file.exists (f)) {
   ijPrefs <-
@@ -24,8 +27,10 @@ if (file.exists (f)) {
       f,
       header = FALSE,
       sep = "=",
+      fill= T,
       col.names = c("Key", "Value")
     )
+  print ("done reading prefs file")
   panelTempDir <-
     paste("", with(ijPrefs, Value[Key == ".figurej.tempDir"]), sep = "")
   panelFilename <-
@@ -35,7 +40,19 @@ if (file.exists (f)) {
     paste("", with(ijPrefs, Value[Key == ".figurej.panelWidth"]), sep = "")
   panelHeight <-
     paste("", with(ijPrefs, Value[Key == ".figurej.panelHeight"]), sep = "")
+  print (paste("temp dir:",panelTempDir))
+  print (paste("fname:",panelFilename))
+  print (paste("width:",panelWidth))
+  print (paste("height:",panelHeight))
 }
+  ### make sure temp dir exists, or create it
+  if (file.exists (panelTempDir)) {
+    print ("temp dir does exists")
+  } else {
+    print ("no temp dir, creating it")
+    dir.create(panelTempDir)
+  }
+  
 if ((panelTempDir != "") &&
     (panelFilename != "") && (panelWidth != "") && (panelHeight != "")) {
   if (nchar(f) > 0) {
@@ -60,3 +77,5 @@ if ((panelTempDir != "") &&
   }
 } 
 }
+# explicit call for debugging before updating github
+# exportPanel()
